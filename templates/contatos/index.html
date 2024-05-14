@@ -1,74 +1,39 @@
 {% extends 'contatos/base.html' %}
 {% block content %}
 
-{%include 'contatos/partials/_nav.html'%}
+
 
 <div class="container my-4">
+    {%include 'contatos/partials/_nav.html'%}
+
     <!-- Lista de contatos -->
 
     <ul class="list-group shadow mt-3">
+        {% if conts %}
+
+        {% for info in conts %}
         <li class="list-group-item d-flex align-items-center mb-2">
-            <img src="https://i.uai.com.br/N9LkhjqBj-setujsibHJELN9XX4=/750x0/imgsapp2.uai.com.br/app/noticia_133890394703/2023/04/02/320977/chris-evans-como-capitao-america_1_48922.jpg"
-                class="rounded-circle me-3 imgContato" alt="Foto de cap america">
+            <img src="https://observatoriodatv.uol.com.br/wp-content/uploads/2019/12/selton-mello2.jpg"
+                class="rounded-circle me-3 imgContato" alt="Foto de Maria Silva">
             <div class="flex-grow-1">
-                <a href="{% url 'contato'%}" class="text-decoration-none">Cap America</a>
+                <a href="{% url 'contato' info.id %}" class="text-decoration-none">{{info.nome}}</a>
             </div>
             <span>
                 <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
                 <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
             </span>
         </li>
-        <li class="list-group-item d-flex align-items-center mb-2">
-            <img src="https://static.wikia.nocookie.net/disney/images/3/35/IronMan-EndgameProfile.jpg/revision/latest?cb=20200516075827&path-prefix=pt-br"
-                class="rounded-circle me-3 imgContato" alt="Foto de Homem de ferro">
-            <div class="flex-grow-1">
-                <a href="{% url 'contato'%}" class="text-decoration-none">Homem de ferro</a>
-            </div>
-            <span>
-                <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-                <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-            </span>
-        </li>
-        <li class="list-group-item d-flex align-items-center mb-2">
-            <img src="https://conteudo.imguol.com.br/c/entretenimento/e4/2019/08/23/tom-holland-como-homem-aranha-1566590006468_v2_3x4.jpg"
-                class="rounded-circle me-3 imgContato" alt="Foto de Homem aranha">
-            <div class="flex-grow-1">
-                <a href="{% url 'contato'%}" class="text-decoration-none">Homem Aranha</a>
-            </div>
-            <span>
-                <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-                <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-            </span>
-        </li>
-        <li class="list-group-item d-flex align-items-center mb-2">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT-2cKjQuZkl_3ydJOFpwnDPQ6xERXUz20y9XCVca7G6Q&s"
-                class="rounded-circle me-3 imgContato" alt="Foto de Hulk">
-            <div class="flex-grow-1">
-                <a href="{% url 'contato'%}" class="text-decoration-none">Hulk</a>
-            </div>
-            <span>
-                <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-                <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-            </span>
-        </li>
-        <li class="list-group-item d-flex align-items-center mb-2">
-            <img src="https://images.tcdn.com.br/img/img_prod/460977/pre_venda_action_figure_homem_formiga_ant_man_homem_formiga_e_a_vespa_ant_man_and_the_wasp_mms497_es_62169_6_3e6ab360f6e1da572b60865ec271d96f.jpg"
-                class="rounded-circle me-3 imgContato" alt="Foto de Homem formiga">
-            <div class="flex-grow-1">
-                <a href="{% url 'contato'%}" class="text-decoration-none">Homem formiga</a>
-            </div>
-            <span>
-                <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
-                <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-            </span>
-        </li>
+        {% endfor %}
+        {% else %}
+        {% endif %}
+
         <!-- Repita o formato do item acima para cada contato -->
     </ul>
 
 </div>
 
 <!-- JavaScript para filtrar contatos -->
-</div>  
+</div>
 
 {%include 'contatos/partials/_footer.html'%}
 <!-- Bootstrap Bundle with Popper -->

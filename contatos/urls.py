@@ -3,5 +3,5 @@ from contatos.views import index,contato
 
 urlpatterns = [
     path('', index),
-    path('contato',contato, name='contato')
+    path('contato/<int:info_id>',contato, name='contato')
 ]
