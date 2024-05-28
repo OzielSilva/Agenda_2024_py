@@ -6,7 +6,7 @@ class Contato(models.Model):
     telefone  = models.CharField(max_length =100, null=False, blank=False)
     email =  models.EmailField(max_length = 254, null=False, blank=False)
     endereco = models.CharField(max_length=254)
-    imagem = models.CharField(max_length= 254, null=True, blank=True)
+    imagem = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True)
 
 
 def __str__(self):

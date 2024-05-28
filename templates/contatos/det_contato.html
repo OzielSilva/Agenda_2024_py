@@ -1,7 +1,6 @@
 {% extends 'contatos/base.html' %}
 {% block content %}
 
-
 <div class="main-container">
     <!-- Menu -->
     {%include 'contatos/partials/_nav.html'%}
@@ -12,8 +11,15 @@
         <!-- Conteúdo da página -->
         <div class="container my-4">
             <div class="card">
-                <img src="https://via.placeholder.com/100" class="card-img-top" alt="Foto do Contato"
-                    style="width: 100px; margin: auto;">
+                
+                {%if contato.imagem == '' or contato.imagem == null %}
+                <img src="https://img.freepik.com/vetores-gratis/design-plano-sem-sinal-de-foto_23-2149257867.jpg?w=740&t=st=1716313137~exp=1716313737~hmac=e8949e10a9db202a083e52ae6118e7d790fcb33c31b39a32ea2a67ed8320cb19"
+                    class="card-img-top" alt="Foto do Contato" style="width: 100px; margin: auto;">
+                {%else%}
+                <img src="{{contato.imagem.url}}" class="card-img-top" alt="Foto do Contato"
+                    style="width: 100px; margin: auto; border-radius: 20px;">
+                {%endif%}
+
                 <div class="card-body">
                     <h5 class="card-title">{{contato.nome}}</h5>
                     <p class="card-text"><strong>Número de Telefone:</strong>{{contato.telefone}}</p>
@@ -21,6 +27,8 @@
                     <p class="card-text"><strong>Endereço:</strong>e {{contato.endereco}}</p>
                     <a href="#" class="btn btn-primary">Voltar</a>
                 </div>
+                
+               
             </div>
         </div>
 
