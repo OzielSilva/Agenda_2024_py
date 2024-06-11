@@ -8,7 +8,7 @@ class LoginForms(forms.Form):
                                           "placeholder": "Digite seu nome de login"}
                                ),
                                max_length = 100)
-    Senha1 = forms.CharField(label= 'senha',
+    senha1 = forms.CharField(label= 'senha',
                                required= True,
                                widget = forms.PasswordInput(
                                    attrs={"class": "form-control",
@@ -25,7 +25,7 @@ class CadastroForms(forms.Form):
                                           "placeholder": "Digite seu nome de login"}
                                ),
                                max_length = 100)
-    Senha1 = forms.CharField(label= 'senha',
+    senha_1 = forms.CharField(label= 'senha',
                                required= True,
                                widget = forms.PasswordInput(
                                    attrs={"class": "form-control",
@@ -33,8 +33,8 @@ class CadastroForms(forms.Form):
                                ),
                                max_length = 100)   
 
-    Senha2 = forms.CharField(label= 'Senha',
-                               required = True,widget = forms.TextInput(
+    senha_2 = forms.CharField(label= 'Senha',
+                               required = True,widget = forms.PasswordInput(
                                    attrs={"class": "form-control",
                                           "placeholder": "confirme senha"}
                                ),
@@ -45,6 +45,24 @@ class CadastroForms(forms.Form):
                                  attrs={"class": "form-control",
                                         "placeholder": "Digite seu e-mail"}
                              ),
-                             max_length=100)
-     
-    
+                             max_length=100)    
+    def clean_username(self):
+        name = self.cleaned_data['username']
+        if name:
+            name = name.strip()
+        if " " in name:
+            raise forms.ValidationError("O nome de usuário não pode conter espaços")
+        elif " " in name:
+            raise forms.ValidationError("O usuario nao pode ser vazio!") 
+        elif "!" in name:
+            raise forms.ValidationError("O usuario nao pode conter caracteres especiais!")
+        else:
+            return name 
+               
+    def clean_senha_2(self):
+        senha_1 = self.cleaned_data['senha_1']
+        senha_2 = self.cleaned_data['senha_2']
+        if senha_1 != senha_2:
+            raise forms.ValidationError("As senhas não conferem")
+        return senha_2
+        

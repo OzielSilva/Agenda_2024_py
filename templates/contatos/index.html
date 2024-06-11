@@ -1,10 +1,18 @@
-{% extends 'contatos/base.html' %}
+{% extends 'shared/base.html' %}
 {% block content %}
 
 
 
 <div class="container my-4">
-    {%include 'contatos/partials/_nav.html'%}
+    {%include 'partials/_nav.html'%}
+    {% for message in messages %}
+
+    <div class="alert alert-success" role="alert">
+
+    <p>{{message}}</p>
+
+</div>
+    {%endfor%}
     <!-- Campo de pesquisa -->
     <div class="d-flex justify-content-end">
         <div class="input-group w-50">
@@ -52,7 +60,7 @@
     <!-- JavaScript para filtrar contatos -->
 </div>
 
-{%include 'contatos/partials/_footer.html'%}
+{%include 'partials/_footer.html'%}
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 

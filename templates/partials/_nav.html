@@ -9,10 +9,10 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    <a class="nav-link" href="#">Adicionar Contato</a>
+                    <a class="nav-link active" aria-current="page" href="{$ url'index' $}">Home</a>
+                    <a class="nav-link" href="{% url 'novo_contato' %}">Adicionar Contato</a>
                     <a class="nav-link" href="#">Perfil</a>
-                    <a class="nav-link" href="#">Sair</a>
+                    <a class="nav-link" href="{%url 'logout' %}">Sair</a>
                 </div>
             </div>
         </div>
