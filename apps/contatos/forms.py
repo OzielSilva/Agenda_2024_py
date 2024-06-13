@@ -4,14 +4,14 @@ from apps.contatos.models import Contato
 class ContatoForm(forms.ModelForm):
     class Meta:
         model = Contato
-        exclude = ()
+        exclude = ('usuario',)
         labels = {
             'nome': 'Nome',
             'email': 'E-mail',
             'telefone': 'Telefone',
             'endereco': 'Endereco',
             'imagem': 'Imagem',
-            'usuario': 'Usuario',
+            
         }
         wigtes = {
             'nome': forms.TextInput(attrs={'class': 'form-control'}),

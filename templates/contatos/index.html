@@ -9,15 +9,16 @@
 
     <div class="alert alert-success" role="alert">
 
-    <p>{{message}}</p>
+        <p>{{message}}</p>
 
-</div>
+    </div>
     {%endfor%}
     <!-- Campo de pesquisa -->
     <div class="d-flex justify-content-end">
         <div class="input-group w-50">
             <form action="{% url 'buscar' %}">
-                <input class="form-control" id="searchInput" name="buscar" type="text" placeholder="Pesquisar contato...">
+                <input class="form-control" id="searchInput" name="buscar" type="text"
+                    placeholder="Pesquisar contato...">
                 <button class="btn btn-outline-secondary" type="submit" id="button-addon2">
                     <i class="bi bi-search"></i>
                 </button>
@@ -25,39 +26,45 @@
 
         </div>
     </div>
-        <!-- Lista de contatos -->
+    <!-- Lista de contatos -->
 
-        <ul class="list-group shadow mt-3">
-            {% if conts %}
+    <ul class="list-group shadow mt-3">
+        {% if conts %}
 
-            {% for info in conts %}
+        {% for info in conts %}
 
-            <li class="list-group-item d-flex align-items-center mb-2">
-                {% if info.imagem == '' or info.imagem == null %}
-                <img src="https://img.freepik.com/vetores-gratis/design-plano-sem-sinal-de-foto_23-2149257867.jpg?w=740&t=st=1716313137~exp=1716313737~hmac=e8949e10a9db202a083e52ae6118e7d790fcb33c31b39a32ea2a67ed8320cb19"
-                    class="rounded-circle me-3 imgContato" alt="Foto de Maria Silva">
-                {%else%}
-                <img src="{{info.imagem.url}}" class="rounded-circle me-3 imgContato" alt="Foto de Maria Silva">
-                {%endif%}
+        <li class="list-group-item d-flex align-items-center mb-2">
+            {% if info.imagem == '' or info.imagem == null %}
+            <img src="https://img.freepik.com/vetores-gratis/design-plano-sem-sinal-de-foto_23-2149257867.jpg?w=740&t=st=1716313137~exp=1716313737~hmac=e8949e10a9db202a083e52ae6118e7d790fcb33c31b39a32ea2a67ed8320cb19"
+                class="rounded-circle me-3 imgContato" alt="Foto de Maria Silva">
+            {%else%}
+            <img src="{{info.imagem.url}}" class="rounded-circle me-3 imgContato" alt="Foto de Maria Silva">
+            {%endif%}
 
-                <div class="flex-grow-1">
-                    <a href="{% url 'contato' info.id %}" class="text-decoration-none">{{info.nome}}</a>
-                </div>
-                <span>
+            <div class="flex-grow-1">
+                <a href="{% url 'contato' info.id %}" class="text-decoration-none">{{info.nome}}</a>
+            </div>
+            <span>
+                <a href="{% url 'editar_contato' info.id %}" class="icon-link">
                     <i class="bi bi-pencil-square text-primary" style="cursor:pointer;"></i>
+
+                </a>
+                <a href="{% url 'deletar_contato' info.id %}" class="icon-link">
                     <i class="bi bi-trash-fill text-danger ms-2" style="cursor:pointer;"></i>
-                </span>
-            </li>
-            {% endfor %}
-            {% else %}
-            {% endif %}
 
-            <!-- Repita o formato do item acima para cada contato -->
-        </ul>
+                </a>
+            </span>
+        </li>
+        {% endfor %}
+        {% else %}
+        {% endif %}
 
-    </div>
+        <!-- Repita o formato do item acima para cada contato -->
+    </ul>
 
-    <!-- JavaScript para filtrar contatos -->
+</div>
+
+<!-- JavaScript para filtrar contatos -->
 </div>
 
 {%include 'partials/_footer.html'%}

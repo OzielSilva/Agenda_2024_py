@@ -9,8 +9,8 @@ class Contato(models.Model):
     endereco = models.CharField(max_length=254)
     imagem = models.ImageField(upload_to='foto/%Y/%m/%d', blank=True)
     usuario = models.ForeignKey( to =User, 
-                                 on_delete= models.SET_NULL,
-                                 null=True,
+                                 on_delete= models.CASCADE,
+                                 null=False,
                                  blank=False,
                                  related_name="User")
 
